@@ -6,7 +6,7 @@ type ButtonTypes =
   | AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export type ButtonProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   size?: "small" | "medium" | "large";
   fullWidth?: boolean;
   icon?: React.ReactNode;
