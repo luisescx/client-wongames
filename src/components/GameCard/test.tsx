@@ -9,7 +9,6 @@ const props = {
   title: "Red Redemption 2",
   developer: "Rockstar Games",
   price: "R$ 199,00"
-  // promotionalPrice: "R$ 150,00"
 };
 
 describe("<GameCard />", () => {
@@ -35,7 +34,6 @@ describe("<GameCard />", () => {
   });
 
   it("should render price in label", () => {
-    //renderiza o componente OK;
     renderWithTheme(<GameCard {...props} />);
 
     const price = screen.getByText("R$ 199,00");
