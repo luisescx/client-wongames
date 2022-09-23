@@ -1,7 +1,7 @@
 import Button from "components/Button";
 import Ribbon, { RibbonColors, RibbonSizes } from "components/Ribbon";
 import * as S from "./styles";
-
+// commit test
 export type BannerProps = {
   img: string;
   title: string;
