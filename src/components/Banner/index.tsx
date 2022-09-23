@@ -12,7 +12,7 @@ export type BannerProps = {
   ribbonSize?: RibbonSizes;
   ribbonColor?: RibbonColors;
 };
-// banner comment
+
 const Banner = ({
   buttonLabel,
   buttonLink,
