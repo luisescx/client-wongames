@@ -15,7 +15,9 @@ export default {
   },
   args: {
     children: "Buy now",
-    size: "medium"
+    size: "medium",
+    fullWidth: false,
+    minimal: false
   }
 } as Meta<ButtonProps>;
 
