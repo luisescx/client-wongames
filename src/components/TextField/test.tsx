@@ -95,4 +95,17 @@ describe("<TextField />", () => {
       expect(input).toHaveFocus();
     });
   });
+
+  it("should render with error", () => {
+    renderWithTheme(
+      <TextField
+        icon={<Email data-testid="icon" />}
+        label="TextField"
+        labelFor="TextField"
+        error="Error message"
+      />
+    );
+
+    expect(screen.getByText("Error message")).toBeInTheDocument();
+  });
 });
