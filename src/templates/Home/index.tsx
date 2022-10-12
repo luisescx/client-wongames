@@ -3,10 +3,9 @@ import BannerSlider from "components/BannerSlider";
 import { Container } from "components/Container";
 import Footer from "components/Footer";
 import { GameCardProps } from "components/GameCard";
-import GameCardSlider from "components/GameCardSlider";
-import Heading from "components/Heading";
-import Highlight, { HighlightProps } from "components/Highlight";
+import { HighlightProps } from "components/Highlight";
 import Menu from "components/Menu";
+import Showcase from "components/Showcase";
 import * as S from "./styles";
 
 export type HomeTemplateProps = {
@@ -42,47 +41,21 @@ const Home = ({
     </Container>
 
     <S.SectionNews>
-      <Container>
-        <Heading lineLeft lineColor="secondary">
-          News
-        </Heading>
-
-        <GameCardSlider items={newGames} />
-      </Container>
+      <Showcase title="News" games={newGames} />
     </S.SectionNews>
 
-    <Container>
-      <S.SectionMostPopular>
-        <Heading lineLeft lineColor="secondary">
-          Most Popular
-        </Heading>
+    <Showcase
+      title="Most Popular"
+      highlight={mostPopularHighlight}
+      games={mostPopularGames}
+    />
 
-        <Highlight {...mostPopularHighlight} />
-        <GameCardSlider items={mostPopularGames} color="white" />
-      </S.SectionMostPopular>
-    </Container>
+    <S.SectionUpcoming>
+      <Showcase title="Upcoming" games={upcomingGames} />
+      <Showcase highlight={upcomingHighlight} games={upcomingMoreGames} />
+    </S.SectionUpcoming>
 
-    <Container>
-      <S.SectionUpcoming>
-        <Heading lineLeft lineColor="secondary">
-          Upcoming
-        </Heading>
-
-        <GameCardSlider items={upcomingGames} color="white" />
-        <Highlight {...upcomingHighlight} />
-        <GameCardSlider items={upcomingMoreGames} color="white" />
-      </S.SectionUpcoming>
-    </Container>
-
-    <Container>
-      <S.SectionFreeGames>
-        <Heading lineLeft lineColor="secondary">
-          Free games
-        </Heading>
-        <Highlight {...freeHighlight} />
-        <GameCardSlider items={freeGames} color="white" />
-      </S.SectionFreeGames>
-    </Container>
+    <Showcase title="Free games" highlight={freeHighlight} games={freeGames} />
 
     <S.SectionFooter>
       <Container>
