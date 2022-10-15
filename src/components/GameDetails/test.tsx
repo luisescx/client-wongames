@@ -48,9 +48,27 @@ describe("<GameDetails />", () => {
     expect(screen.getByRole("img", { name: /mac/i })).toBeInTheDocument();
   });
 
+  it("should render the rating Free", () => {
+    renderWithTheme(<GameDetails {...props} />);
+
+    expect(screen.getByText(/free/i)).toBeInTheDocument();
+  });
+
+  it("should render the rating BR18", () => {
+    renderWithTheme(<GameDetails {...props} rating="BR18" />);
+
+    expect(screen.getByText(/18\+/i)).toBeInTheDocument();
+  });
+
   it("should render the release date", () => {
     renderWithTheme(<GameDetails {...props} />);
 
     expect(screen.getByText("Nov 21, 2020")).toBeInTheDocument();
+  });
+
+  it("should render the genres", () => {
+    renderWithTheme(<GameDetails {...props} />);
+
+    expect(screen.getByText("Role-playing / Narrative")).toBeInTheDocument();
   });
 });
