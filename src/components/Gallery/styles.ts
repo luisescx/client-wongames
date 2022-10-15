@@ -37,3 +37,54 @@ export const Wrapper = styled.div`
     `}
   `}
 `;
+
+type ModalProps = {
+  isOpen: boolean;
+};
+
+const modalModifiers = {
+  open: () => css`
+    opacity: 1;
+  `,
+  close: () => css`
+    opacity: 0;
+    pointer-events: none;
+  `
+};
+
+export const Modal = styled.div<ModalProps>`
+  ${({ theme, isOpen }) => css`
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: ${theme.layers.modal};
+    top: 0;
+    left: 0;
+    transition: opacity ${theme.transition.default};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ${isOpen && modalModifiers.open()}
+    ${!isOpen && modalModifiers.close()}
+  `}
+`;
+
+export const Close = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    text-align: right;
+  `}
+`;
+
+export const Content = styled.div`
+  max-width: min(120rem, 100%);
+  max-height: 80rem;
+`;
