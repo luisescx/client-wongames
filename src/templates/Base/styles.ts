@@ -21,3 +21,7 @@ export const SectionFooter = styled.section`
     `}
   `}
 `;
+
+export const Content = styled.div`
+  flex: 1 0 auto;
+`;
