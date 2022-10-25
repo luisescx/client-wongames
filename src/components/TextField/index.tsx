@@ -2,7 +2,6 @@ import React, { InputHTMLAttributes, useCallback, useState } from "react";
 import * as S from "./styles";
 
 export type TextFieldProps = {
-  labelFor?: string;
   initialValue?: string;
   label?: string;
   icon?: React.ReactNode;
@@ -14,13 +13,14 @@ export type TextFieldProps = {
 
 const TextField = ({
   label,
-  labelFor = "",
+
   initialValue = "",
   onInput,
   icon,
   disabled = false,
   iconPosition = "left",
   error,
+  name,
   ...props
 }: TextFieldProps) => {
   const [value, setValue] = useState(initialValue);
@@ -37,18 +37,19 @@ const TextField = ({
 
   return (
     <S.Wrapper disabled={disabled} error={!!error}>
-      {!!label && <S.Label htmlFor={labelFor}>{label}</S.Label>}
+      {!!label && <S.Label htmlFor={name}>{label}</S.Label>}
 
       <S.InputWrapper>
         {!!icon && <S.Icon iconPosition={iconPosition}>{icon}</S.Icon>}
 
         <S.Input
-          id={labelFor}
           type="text"
           disabled={disabled}
           onChange={onChange}
           value={value}
           iconPosition={iconPosition}
+          name={name}
+          {...(label ? { id: name } : {})}
           {...props}
         />
       </S.InputWrapper>

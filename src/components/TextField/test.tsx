@@ -7,7 +7,7 @@ import { Email } from "@styled-icons/material-outlined";
 
 describe("<TextField />", () => {
   it("should render the label", () => {
-    renderWithTheme(<TextField labelFor="textField" label="Text Field" />);
+    renderWithTheme(<TextField label="Label" name="Label" />);
 
     expect(screen.getByRole("textbox")).toBeInTheDocument();
     expect(screen.getByLabelText(/text field/i)).toBeInTheDocument();
@@ -32,12 +32,7 @@ describe("<TextField />", () => {
   it("Changes its value when typing", async () => {
     const onInput = jest.fn();
     renderWithTheme(
-      <TextField
-        onInput={onInput}
-        label="TextField"
-        labelFor="TextField"
-        id="TextField"
-      />
+      <TextField onInput={onInput} label="TextField" name="TextField" />
     );
 
     const input = screen.getByRole("textbox");
@@ -63,7 +58,7 @@ describe("<TextField />", () => {
       <TextField
         onInput={onInput}
         label="TextField"
-        labelFor="TextField"
+        name="TextField"
         id="TextField"
         disabled
       />
@@ -82,9 +77,7 @@ describe("<TextField />", () => {
   });
 
   it("Is accessible by tab", async () => {
-    renderWithTheme(
-      <TextField label="TextField" labelFor="TextField" id="TextField" />
-    );
+    renderWithTheme(<TextField label="TextField" name="TextField" />);
 
     const input = screen.getByLabelText("TextField");
     expect(document.body).toHaveFocus();
@@ -101,7 +94,6 @@ describe("<TextField />", () => {
       <TextField
         icon={<Email data-testid="icon" />}
         label="TextField"
-        labelFor="TextField"
         error="Error message"
       />
     );
