@@ -13,7 +13,6 @@ export type TextFieldProps = {
 
 const TextField = ({
   label,
-
   initialValue = "",
   onInput,
   icon,

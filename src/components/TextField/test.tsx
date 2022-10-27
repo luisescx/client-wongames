@@ -9,9 +9,7 @@ describe("<TextField />", () => {
   it("should render the label", () => {
     renderWithTheme(<TextField label="Label" name="Label" />);
 
-    expect(screen.getByRole("textbox")).toBeInTheDocument();
-    expect(screen.getByLabelText(/text field/i)).toBeInTheDocument();
-    expect(screen.getByText(/text field/i)).toHaveAttribute("for", "textField");
+    expect(screen.getByLabelText("Label")).toBeInTheDocument();
   });
 
   it("should render without label", () => {
