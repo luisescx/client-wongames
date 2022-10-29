@@ -6,7 +6,7 @@ import CartIcon from "components/CartIcon";
 
 export type CartDropdownProps = {
   items?: GameItemProps[];
-  total: string;
+  total?: string;
 };
 
 const CartDropdown = ({ total, items = [] }: CartDropdownProps) => (
