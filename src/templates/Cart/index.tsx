@@ -15,6 +15,7 @@ export type CartProps = {
   recommendedHighlight: HighlightProps;
 } & CartListProps &
   Pick<PaymentOptionsProps, "cards">;
+
 const Cart = ({
   recommendedGames,
   recommendedHighlight,
@@ -23,6 +24,7 @@ const Cart = ({
   cards
 }: CartProps) => {
   const handlePayment = () => ({});
+
   return (
     <Base>
       <Container>
@@ -30,7 +32,7 @@ const Cart = ({
           My cart
         </Heading>
 
-        {items.length > 0 ? (
+        {items?.length ? (
           <S.Content>
             <CartList items={items} total={total} />
 
