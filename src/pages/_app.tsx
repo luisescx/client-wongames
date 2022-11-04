@@ -7,7 +7,7 @@ import theme from "styles/themes";
 import { useApollo } from "utils/apollo";
 
 function App({ Component, pageProps }: AppProps) {
-  const client = useApollo(pageProps.initialApoloState);
+  const client = useApollo(pageProps.initialApolloState);
 
   return (
     <ApolloProvider client={client}>
@@ -17,7 +17,6 @@ function App({ Component, pageProps }: AppProps) {
 
           <link rel="shortcut icon" href="/img/icon-512.png" />
           <link rel="apple-touch-icon" href="/img/icon-512.png" />
-          <link rel="manifest" href="/manifest.json" />
           <meta
             name="description"
             content="The best Game Stores in the world!"
