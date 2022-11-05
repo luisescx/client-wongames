@@ -32,10 +32,7 @@ export async function getServerSideProps() {
           img: game.attributes?.cover?.data?.attributes?.url
             ? `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`
             : "",
-          price: new Intl.NumberFormat("en", {
-            style: "currency",
-            currency: "USD"
-          }).format(game.attributes?.price || 0)
+          price: game.attributes?.price
         })) || [],
       filterItems: filterItemsMock
     }
