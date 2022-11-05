@@ -2,11 +2,8 @@ import Home, { HomeTemplateProps } from "templates/Home";
 import gamesMock from "components/GameCardSlider/mock";
 import highlightMock from "components/Highlight/mock";
 import { initializeApollo } from "utils/apollo";
-import {
-  QueryBanners,
-  QueryBannersVariables
-} from "graphql/generated/QueryBanners";
-import { QUERY_BANNERS } from "graphql/queries/home";
+import { QUERY_HOME } from "graphql/queries/home";
+import { QueryHome } from "graphql/generated/QueryHome";
 
 export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />;
@@ -15,17 +12,12 @@ export default function Index(props: HomeTemplateProps) {
 export async function getStaticProps() {
   const apolloClient = initializeApollo();
 
-  const { data } = await apolloClient.query<
-    QueryBanners,
-    QueryBannersVariables
-  >({
-    query: QUERY_BANNERS,
-    variables: {
-      pagination: { limit: 9 }
-    }
+  const { data } = await apolloClient.query<QueryHome>({
+    query: QUERY_HOME
   });
 
   const banners = data.banners?.data || [];
+  const newGames = data.newGames?.data || [];
 
   return {
     props: {
@@ -41,7 +33,13 @@ export async function getStaticProps() {
           ribbonSize: banner.attributes.ribbon.size
         })
       })),
-      newGames: gamesMock,
+      newGames: newGames.map((game) => ({
+        title: game.attributes?.name,
+        slug: game.attributes?.slug,
+        developer: game.attributes?.developers?.data[0].attributes?.name,
+        img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
+        price: game.attributes?.price
+      })),
       mostPopularHighlight: highlightMock,
       mostPopularGames: gamesMock,
       upcomingGames: gamesMock,

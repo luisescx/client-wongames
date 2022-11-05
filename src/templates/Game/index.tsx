@@ -52,7 +52,7 @@ const Game = ({
       </S.SectionGameDetails>
 
       <Showcase
-        title="Upcomming"
+        title="Upcoming"
         games={upcomingGames}
         highlight={upcomingHighlight}
       />
