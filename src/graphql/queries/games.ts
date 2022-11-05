@@ -1,8 +1,12 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_GAMES = gql`
-  query QueryGames {
-    games {
+  query QueryGames(
+    $filters: GameFiltersInput
+    $pagination: PaginationArg
+    $sort: [String]
+  ) {
+    games(filters: $filters, pagination: $pagination, sort: $sort) {
       data {
         attributes {
           name
