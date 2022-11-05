@@ -26,6 +26,7 @@ export async function getServerSideProps() {
       games:
         dataConvert?.map((game) => ({
           title: game.attributes?.name,
+          slug: game.attributes?.slug,
           developer:
             game.attributes?.developers?.data[0].attributes?.name || "",
           img: game.attributes?.cover?.data?.attributes?.url

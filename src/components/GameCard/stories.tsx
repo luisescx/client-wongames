@@ -6,6 +6,7 @@ export default {
   component: GameCard,
   args: {
     img: "https://source.unsplash.com/user/willianjusten/1042x580",
+    slug: "population-zero",
     title: "Red Redemption 2",
     developer: "Rockstar Games",
     price: "R$ 199,00",
