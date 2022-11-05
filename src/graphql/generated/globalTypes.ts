@@ -7,12 +7,39 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum ENUM_COMPONENTPAGERIBBON_COLOR {
+  primary = "primary",
+  secondary = "secondary",
+}
+
+export enum ENUM_COMPONENTPAGERIBBON_SIZE {
+  normal = "normal",
+  small = "small",
+}
+
 export enum ENUM_GAME_RATING {
   BR0 = "BR0",
   BR10 = "BR10",
   BR12 = "BR12",
   BR16 = "BR16",
   BR18 = "BR18",
+}
+
+export enum PublicationState {
+  LIVE = "LIVE",
+  PREVIEW = "PREVIEW",
+}
+
+export interface BannerFiltersInput {
+  id?: IDFilterInput | null;
+  title?: StringFilterInput | null;
+  subtitle?: StringFilterInput | null;
+  createdAt?: DateTimeFilterInput | null;
+  updatedAt?: DateTimeFilterInput | null;
+  publishedAt?: DateTimeFilterInput | null;
+  and?: (BannerFiltersInput | null)[] | null;
+  or?: (BannerFiltersInput | null)[] | null;
+  not?: BannerFiltersInput | null;
 }
 
 export interface CategoryFiltersInput {
