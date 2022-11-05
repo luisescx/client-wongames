@@ -9,8 +9,8 @@ export default {
     slug: "population-zero",
     title: "Red Redemption 2",
     developer: "Rockstar Games",
-    price: "R$ 199,00",
-    promotionalPrice: "R$ 150,00"
+    price: 235,
+    promotionalPrice: 215
   },
   argTypes: {
     onFav: { action: "clicked" },
