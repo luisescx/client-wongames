@@ -9,7 +9,8 @@ import Wishlist from ".";
 const props = {
   recommendedHighlight: highlightMock,
   recommendedGames: gamesMock,
-  games: gamesMock
+  games: gamesMock,
+  recommendedTitle: "You may like these games"
 };
 
 jest.mock("components/Showcase", () => ({
@@ -33,6 +34,7 @@ describe("<Wishlist />", () => {
   it("should render empty when there are no games", () => {
     renderWithTheme(
       <Wishlist
+        recommendedTitle="You may like these games"
         recommendedGames={gamesMock}
         recommendedHighlight={highlightMock}
       />
