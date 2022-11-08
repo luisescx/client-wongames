@@ -15,13 +15,12 @@ export async function getServerSideProps() {
   await apolloClient.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,
     variables: {
-      pagination: { limit: 15 }
+      pagination: { limit: 15, start: 0 }
     }
   });
 
   return {
     props: {
-      revalidate: 60,
       initializeApollo: apolloClient.cache.extract(),
       filterItems: filterItemsMock
     }
