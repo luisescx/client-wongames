@@ -6,7 +6,7 @@ import { useQueryGames } from "graphql/queries/games";
 
 import Base from "templates/Base";
 import { Grid } from "components/Grid";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { QueryGames } from "graphql/generated/QueryGames";
 
 export type GamesTemplateProps = {
@@ -52,10 +52,6 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     });
   }, [data?.games?.data, fetchMore]);
 
-  useEffect(() => {
-    console.log("data", data?.games?.data);
-  }, [data]);
-
   return (
     <Base>
       <S.Content>
@@ -63,7 +59,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 
         {data?.games?.data && data?.games?.data.length && (
           <section>
-            <Grid>
+            <Grid data-testid="Game Card">
               {data?.games?.data.map((game, index) => (
                 <GameCard
                   key={`${game.attributes?.name}${index}`}

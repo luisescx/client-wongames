@@ -1,9 +1,12 @@
 import { screen } from "@testing-library/react";
 import { renderWithTheme } from "utils/tests/helpers";
-import gamesMock from "components/GameCardSlider/mock";
+import { fetchMoreMock, gamesMock } from "./mock";
 import filterItemsMock from "components/ExploreSideBar/mock";
+import { MockedProvider } from "@apollo/client/testing";
+import userEvent from "@testing-library/user-event";
 
 import Games from ".";
+import { InMemoryCache } from "@apollo/client";
 
 jest.mock("templates/Base", () => ({
   __esModule: true,
@@ -19,24 +22,38 @@ jest.mock("components/ExploreSidebar", () => ({
   }
 }));
 
-jest.mock("components/GameCard", () => ({
-  __esModule: true,
-  default: function Mock() {
-    return <div data-testid="Mock GameCard" />;
-  }
-}));
-
 describe("<Games />", () => {
-  it("should render sections", () => {
+  it("should render sections", async () => {
     renderWithTheme(
-      <Games filterItems={filterItemsMock} games={[gamesMock[0]]} />
+      <MockedProvider mocks={[gamesMock]}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
     );
 
-    expect(screen.getByTestId("Mock ExploreSidebar")).toBeInTheDocument();
-    expect(screen.getByTestId("Mock GameCard")).toBeInTheDocument();
+    // we wait until we have data to get the elements
+    // get => tem certeza do elemento
+    // query => Não tem o elemento
+    // find => processos assincronos
 
     expect(
-      screen.getByRole("button", { name: /show more/i })
+      await screen.findByTestId("Mock ExploreSidebar")
     ).toBeInTheDocument();
+    expect(await screen.findByTestId("Game Card")).toBeInTheDocument();
+    expect(
+      await screen.findByRole("button", { name: /show more/i })
+    ).toBeInTheDocument();
+  });
+
+  it("should render more games when show more is clicked", async () => {
+    renderWithTheme(
+      <MockedProvider
+        mocks={[gamesMock, fetchMoreMock]}
+        cache={new InMemoryCache()}
+      >
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    );
+
+    userEvent.click(await screen.findByRole("button", { name: /show more/i }));
   });
 });
