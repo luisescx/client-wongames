@@ -19,6 +19,7 @@ export const QUERY_HOME = gql`
       sort: "release_date:desc"
     ) {
       data {
+        id
         attributes {
           ...GameFragment
         }
@@ -31,6 +32,7 @@ export const QUERY_HOME = gql`
       sort: "release_date:asc"
     ) {
       data {
+        id
         attributes {
           ...GameFragment
         }
@@ -43,6 +45,7 @@ export const QUERY_HOME = gql`
       sort: "release_date:desc"
     ) {
       data {
+        id
         attributes {
           ...GameFragment
         }
@@ -81,6 +84,7 @@ export const QUERY_HOME = gql`
 
             games(pagination: { limit: 8 }) {
               data {
+                id
                 attributes {
                   ...GameFragment
                 }

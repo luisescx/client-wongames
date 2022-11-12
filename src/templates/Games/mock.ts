@@ -10,6 +10,7 @@ export const gamesMock = {
   result: {
     data: {
       games: {
+        id: "1",
         data: [
           {
             __typename: "GameEntity",
@@ -51,6 +52,7 @@ export const fetchMoreMock = {
       games: {
         data: [
           {
+            id: "2",
             __typename: "GameEntity",
             attributes: {
               name: "fetch more games",

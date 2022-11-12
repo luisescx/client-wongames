@@ -10,6 +10,7 @@ export const QUERY_UPCOMING = gql`
       sort: "release_date:asc"
     ) {
       data {
+        id
         attributes {
           ...GameFragment
         }

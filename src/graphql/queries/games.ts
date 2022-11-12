@@ -10,6 +10,7 @@ export const QUERY_GAMES = gql`
   ) {
     games(filters: $filters, pagination: $pagination, sort: $sort) {
       data {
+        id
         attributes {
           ...GameFragment
         }
@@ -28,6 +29,7 @@ export const QUERY_GAME_BY_SLUG = gql`
   ) {
     games(filters: $filters, pagination: $pagination, sort: $sort) {
       data {
+        id
         attributes {
           name
           short_description
