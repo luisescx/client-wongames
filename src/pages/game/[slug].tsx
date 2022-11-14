@@ -62,7 +62,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           eq: `${params?.slug}`
         }
       }
-    }
+    },
+    fetchPolicy: "no-cache"
   });
 
   const dataConvert = data.games?.data;

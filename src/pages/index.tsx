@@ -16,7 +16,8 @@ export async function getStaticProps() {
     query: QUERY_HOME,
     variables: {
       date: today
-    }
+    },
+    fetchPolicy: "no-cache"
   });
 
   const banners = data.banners?.data || [];
@@ -26,6 +27,7 @@ export async function getStaticProps() {
   const sections = data.sections?.data?.attributes;
 
   return {
+    revalidate: 10,
     props: {
       banners: bannerMapper(banners),
       newGamesTitle: sections?.newGames?.title,
