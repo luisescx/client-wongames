@@ -34,6 +34,7 @@ export const gamesMapper = (games: GamesTypes[] | undefined) => {
   return (
     games &&
     games.map((game) => ({
+      id: game.id,
       title: game.attributes?.name,
       slug: game.attributes?.slug,
       developer: game.attributes?.developers?.data[0].attributes?.name,

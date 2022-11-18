@@ -53,6 +53,8 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     });
   }, [data?.games?.data, fetchMore]);
 
+  console.log(data?.games);
+
   return (
     <Base>
       <S.Content>
@@ -64,6 +66,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
               <Grid data-testid="Game Card">
                 {data?.games?.data.map((game, index) => (
                   <GameCard
+                    id={game.id!}
                     key={`${game.attributes?.name}${index}`}
                     title={game.attributes?.name || ""}
                     slug={game.attributes?.slug || ""}

@@ -9,6 +9,6 @@ export default [
     id: "2",
     img: "https://source.unsplash.com/user/willianjusten/151x70",
     title: "Borderlands 3",
-    price: "R$ 215,00"
+    price: "R$ 225,00"
   }
 ];
