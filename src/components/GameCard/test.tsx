@@ -5,6 +5,7 @@ import { renderWithTheme } from "utils/tests/helpers";
 import GameCard from ".";
 
 const props = {
+  id: "1",
   slug: "population-zero",
   img: "https://source.unsplash.com/user/willianjusten/1042x580",
   title: "Red Redemption 2",
@@ -14,7 +15,7 @@ const props = {
 
 describe("<GameCard />", () => {
   it("should render correctly", () => {
-    const { container } = renderWithTheme(<GameCard {...props} />);
+    renderWithTheme(<GameCard {...props} />);
 
     expect(
       screen.getByRole("heading", { name: props.title })
@@ -30,8 +31,6 @@ describe("<GameCard />", () => {
     );
 
     expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument();
-
-    expect(container.firstChild).toMatchSnapshot();
   });
 
   it("should render price in label", () => {
