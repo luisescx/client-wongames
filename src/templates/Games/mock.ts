@@ -10,9 +10,9 @@ export const gamesMock = {
   result: {
     data: {
       games: {
-        id: "1",
         data: [
           {
+            id: "1",
             __typename: "GameEntity",
             attributes: {
               name: "witcher",
