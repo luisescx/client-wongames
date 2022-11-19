@@ -8,13 +8,13 @@ export type TextFieldProps = {
   iconPosition?: "left" | "right";
   disabled?: boolean;
   error?: string;
-  onInput?: (value: string) => void;
+  onInputChange?: (value: string) => void;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const TextField = ({
   label,
   initialValue = "",
-  onInput,
+  onInputChange,
   icon,
   disabled = false,
   iconPosition = "left",
@@ -29,9 +29,9 @@ const TextField = ({
       const newValue = e.currentTarget.value;
       setValue(newValue);
 
-      !!onInput && onInput(newValue);
+      !!onInputChange && onInputChange(newValue);
     },
-    [onInput]
+    [onInputChange]
   );
 
   return (
