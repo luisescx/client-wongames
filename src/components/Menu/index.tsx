@@ -12,7 +12,7 @@ import UserDropdown from "components/UserDropdown";
 import Link from "next/link";
 
 export type MenuProps = {
-  username?: string;
+  username?: string | null;
 };
 
 const Menu = ({ username }: MenuProps) => {

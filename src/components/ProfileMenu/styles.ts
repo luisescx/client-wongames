@@ -34,6 +34,7 @@ type LinkProps = {
 
 export const Link = styled.a<LinkProps>`
   ${({ theme, isActive }) => css`
+    cursor: pointer;
     display: flex;
     align-items: center;
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
