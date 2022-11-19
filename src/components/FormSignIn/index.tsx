@@ -6,10 +6,12 @@ import Button from "components/Button";
 import TextField from "components/TextField";
 import Link from "next/link";
 import * as S from "./styles";
-import { FormWrapper, FormLink } from "components/Form";
+import { FormWrapper, FormLink, FormLoading } from "components/Form";
 
 const FormSignIn = () => {
   const [values, setValues] = useState({});
+  const [loading, setLoading] = useState(false);
+
   const { push } = useRouter();
 
   const handleInput = (field: string, value: string) => {
@@ -18,6 +20,7 @@ const FormSignIn = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setLoading(true);
 
     const result = await signIn("credentials", {
       ...values,
@@ -29,6 +32,7 @@ const FormSignIn = () => {
       return push(result?.url);
     }
 
+    setLoading(false);
     console.error("email ou senha inválida");
   };
 
@@ -52,8 +56,8 @@ const FormSignIn = () => {
 
         <S.ForgotPassword href="#">Forgot your password?</S.ForgotPassword>
 
-        <Button type="submit" fullWidth size="large">
-          Sign in now
+        <Button type="submit" fullWidth size="large" disabled={loading}>
+          {loading ? <FormLoading /> : <span>Sign in now</span>}
         </Button>
 
         <FormLink>

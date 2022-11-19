@@ -18,8 +18,7 @@ export default NextAuth({
         if (cred?.password && cred?.email) {
           const password = cred?.password;
           const email = cred?.email;
-          console.log("password", password);
-          console.log("email", email);
+
           const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/auth/local`,
             {
@@ -31,7 +30,7 @@ export default NextAuth({
           console.log("response authorize", response);
 
           const data = await response.json();
-          console.log("data", data);
+
           if (data.user) {
             return { ...data.user, jwt: data.jwt };
           }
