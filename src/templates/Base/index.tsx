@@ -23,8 +23,6 @@ const Base = ({ children }: BaseTemplateProps) => {
     getUserSession();
   }, []);
 
-  console.log("session", session);
-
   return (
     <S.Wrapper>
       <Container>

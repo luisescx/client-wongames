@@ -19,8 +19,6 @@ const FormSignUp = () => {
   const [createUser, { error, loading }] = useMutation(MUTATION_REGISTER, {
     onError: (err) => console.error(err),
     onCompleted: () => {
-      console.log("dentro do onCompleted");
-
       !error &&
         signIn("credentials", {
           email: values.email,

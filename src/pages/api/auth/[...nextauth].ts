@@ -27,8 +27,6 @@ export default NextAuth({
             }
           );
 
-          console.log("response authorize", response);
-
           const data = await response.json();
 
           if (data.user) {
