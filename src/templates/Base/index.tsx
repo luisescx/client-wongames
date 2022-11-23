@@ -2,7 +2,7 @@ import { Container } from "components/Container";
 import Footer from "components/Footer";
 import Menu from "components/Menu";
 import { Session } from "next-auth";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 import * as S from "./styles";
@@ -13,6 +13,9 @@ export type BaseTemplateProps = {
 
 const Base = ({ children }: BaseTemplateProps) => {
   const [session, setSession] = useState<Session | null>(null);
+
+  const { status } = useSession();
+  console.log("status", status);
 
   useEffect(() => {
     const getUserSession = async () => {
@@ -26,7 +29,7 @@ const Base = ({ children }: BaseTemplateProps) => {
   return (
     <S.Wrapper>
       <Container>
-        <Menu username={session?.user?.name} />
+        <Menu username={session?.user?.name} loading={status === "loading"} />
       </Container>
 
       <S.Content>{children}</S.Content>
