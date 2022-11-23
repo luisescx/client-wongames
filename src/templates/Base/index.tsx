@@ -15,7 +15,6 @@ const Base = ({ children }: BaseTemplateProps) => {
   const [session, setSession] = useState<Session | null>(null);
 
   const { status } = useSession();
-  console.log("status", status);
 
   useEffect(() => {
     const getUserSession = async () => {
