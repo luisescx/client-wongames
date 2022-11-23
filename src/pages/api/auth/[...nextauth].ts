@@ -20,7 +20,7 @@ export default NextAuth({
           const email = cred?.email;
 
           const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/auth/local`,
+            `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
             {
               method: "POST",
               body: new URLSearchParams({ identifier: email, password })
@@ -39,10 +39,10 @@ export default NextAuth({
     })
   ],
   callbacks: {
-    async session({ session, user, token }) {
+    async session({ session, token }) {
       const newSession = { ...session } as any;
 
-      if (user) {
+      if (token) {
         newSession.jwt = token.jwt;
         newSession.id = token.id;
       }
