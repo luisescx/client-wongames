@@ -4,7 +4,7 @@ import { Lock, ErrorOutline } from "@styled-icons/material-outlined";
 import { FormWrapper, FormLoading, FormError } from "components/Form";
 import Button from "components/Button";
 import TextField from "components/TextField";
-import { FieldErrors } from "utils/validations";
+import { FieldErrors, forgotValidate } from "utils/validations";
 import { signIn } from "next-auth/react";
 
 const FormResetPassword = () => {
@@ -23,7 +23,7 @@ const FormResetPassword = () => {
     event.preventDefault();
     setLoading(true);
 
-    const errors = {};
+    const errors = forgotValidate(values);
 
     if (Object.keys(errors).length) {
       setFieldError(errors);
