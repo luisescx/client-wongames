@@ -38,6 +38,7 @@
 
 // Add Testing Library Commands
 import "@testing-library/cypress/add-commands";
+import { User } from "./generate";
 
 Cypress.Commands.add("getByDataCy", (selector, ...args) => {
   cy.get(`[data-cy="${selector}"]`, ...args);
@@ -78,4 +79,12 @@ Cypress.Commands.add("shouldRenderShowcase", ({ name, highlight = false }) => {
 
     cy.getByDataCy("game-card").should("have.length.gt", 0);
   });
+});
+
+Cypress.Commands.add("signUp", (user: User) => {
+  cy.findByPlaceholderText(/username/i).type(user.username);
+  cy.findByPlaceholderText(/email/i).type(user.email);
+  cy.findByPlaceholderText(/^password/i).type(user.password);
+  cy.findByPlaceholderText(/confirm password/i).type(user.password);
+  cy.findByRole("button", { name: /sign up now/i }).click();
 });
