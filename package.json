@@ -16,7 +16,8 @@
     "build-storybook": "build-storybook -s ./public",
     "schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema.gql",
     "codegen": "apollo codegen:generate --target typescript --excludes=node_modules/ --includes=src/graphql/**/*.ts --localSchemaFile schema.gql --tagName=gql --outputFlat src/graphql/generated",
-    "type:generate": "yarn schema:download && yarn codegen"
+    "type:generate": "yarn schema:download && yarn codegen",
+    "cy:open": "cypress open"
   },
   "husky": {
     "hooks": {
@@ -58,6 +59,7 @@
     "@storybook/manager-webpack5": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
+    "@testing-library/cypress": "^8.0.7",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.4.0",
     "@testing-library/react-hooks": "^8.0.1",
@@ -74,9 +76,11 @@
     "apollo": "^2.34.0",
     "babel-loader": "^8.2.5",
     "babel-plugin-styled-components": "^2.0.7",
+    "cypress": "^11.2.0",
     "eslint": "8.24.0",
     "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
