@@ -53,8 +53,6 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     });
   }, [data?.games?.data, fetchMore]);
 
-  console.log(data?.games);
-
   return (
     <Base>
       <S.Content>

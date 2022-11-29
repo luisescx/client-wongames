@@ -6,7 +6,8 @@ import Base from ".";
 jest.mock("next-auth/react", () => ({
   getSession: jest.fn(() => {
     return [{ session: null }];
-  })
+  }),
+  useSession: jest.fn(() => ({ status: "ready" }))
 }));
 
 jest.mock("components/Menu", () => {

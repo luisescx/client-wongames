@@ -15,7 +15,7 @@ describe("User", () => {
     cy.findByText(user.username).should("exist");
   });
 
-  it.skip("should sign in and sign out", () => {
+  it("should sign in and sign out", () => {
     cy.visit("/sign-in");
 
     cy.signIn().then(() => {
@@ -30,7 +30,7 @@ describe("User", () => {
     });
   });
 
-  it("should sign the user and redirect to the page that it was previously defined", () => {
+  it.skip("should sign the user and redirect to the page that it was previously defined", () => {
     cy.visit("/profile/me");
     cy.location("href").should(
       "eq",

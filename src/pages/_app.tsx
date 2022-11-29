@@ -8,9 +8,11 @@ import theme from "styles/themes";
 import { useApollo } from "utils/apollo";
 import { CartProvider } from "hooks/use-cart";
 import { SessionProvider } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initialApolloState);
+  const router = useRouter();
 
   return (
     <SessionProvider session={pageProps.session}>
@@ -35,7 +37,7 @@ function App({ Component, pageProps }: AppProps) {
               stopDelayMs={200}
               height={5}
             />
-            <Component {...pageProps} />
+            <Component {...pageProps} key={router.asPath} />
           </CartProvider>
         </ThemeProvider>
       </ApolloProvider>

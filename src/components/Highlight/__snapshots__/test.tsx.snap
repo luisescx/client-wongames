@@ -102,6 +102,7 @@ exports[`<Highlight /> should render headings and button 1`] = `
 
 <main
   class="c0"
+  data-cy="highlight"
 >
   <div
     class="c1 c2"
